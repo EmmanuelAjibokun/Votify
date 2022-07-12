@@ -44,14 +44,28 @@ body {
 }
 
 .candidate1_bar {
+  position: relative;
   background-color: #08bf46;
-  color: white;
   height: 40px;
+  width: 100%;
 }
 .candidate2_bar {
+  position: relative;
   background-color: rgb(21, 21, 79);
-  color: white;
   height: 40px;
+  width: 100%;
+}
+
+.vote_count1 {
+  position: absolute;
+  top: -30px;
+  left: 5px;
+}
+
+.vote_count2 {
+  position: absolute;
+  top: -30px;
+  right: 5px;
 }
 
 .candidate_n_vote {
