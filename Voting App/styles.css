@@ -1,0 +1,62 @@
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.vote_container {
+  display: flex;
+  padding: 2px;
+  border: 10px solid black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.select_state {
+  font-size: 2.4rem;
+}
+
+.state {
+  font-size: 2.4rem;
+  padding: .5rem 2rem;
+  margin-left: 2rem;
+  background: #c6e9d2;
+  border-radius: 19px;
+}
+
+.candidate_n_vote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candidates_img {
+  display: flex;
+}
+
+.candidate1 {
+  background-image: url(../image/edward.png);
+  height: 100px;
+}
+
+.vote_button {
+  color: white;
+  background: #08bf46;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  border-radius: 22px;
+  padding: .5rem 2rem;
+  margin: 1.5rem 0 .5rem;
+}
