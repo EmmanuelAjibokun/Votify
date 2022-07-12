@@ -11,6 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  background: #e5e5e5;
 }
 
 .vote_container {
@@ -42,10 +43,26 @@ body {
 
 .candidates_img {
   display: flex;
+  margin-top: 1.5rem;
+  gap: 1.5rem;
 }
 
 .candidate1 {
   background-image: url(../image/edward.png);
+  background-blend-mode: luminosity;
+  background-color: black;
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+.candidate2 {
+  background-image: url(../image/elon.png);
+  background-blend-mode: luminosity;
+  background-color: black;
   height: 100px;
   width: 100px;
   background-size: cover;
