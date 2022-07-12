@@ -35,6 +35,25 @@ body {
   border-radius: 19px;
 }
 
+.middle_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.4rem;
+  margin: 50px 0 10px;
+}
+
+.candidate1_bar {
+  background-color: #08bf46;
+  color: white;
+  height: 40px;
+}
+.candidate2_bar {
+  background-color: rgb(21, 21, 79);
+  color: white;
+  height: 40px;
+}
+
 .candidate_n_vote {
   display: flex;
   flex-direction: column;
