@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  background: #e5e5e5;
+  background: #efefef;
 }
 
 .vote_container {
@@ -81,4 +81,10 @@ body {
   border-radius: 22px;
   padding: .5rem 2rem;
   margin: 1.5rem 0 .5rem;
+}
+
+footer {
+  font-size: 1.6rem;
+  position: absolute;
+  /* bottom: 10px; */
 }
