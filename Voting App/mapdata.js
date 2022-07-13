@@ -2,11 +2,28 @@ const voteButton = document.querySelector('.vote_button');
 let voteNumber1 = document.querySelector('.vote_number1').textContent;
 let voteNumber2 = document.querySelector('.vote_number2').textContent;
 const candidatesImage = document.querySelector('.candidates_img');
+let isImageclicked = false;
 
 
 voteButton.addEventListener('click', displayReturnedValues);
 candidatesImage.addEventListener('click', (e) => {
-  console.log(e.target)
+  if (e.target.matches('.candidate1')) {
+    if (isImageclicked === true) {
+      e.target.classList.remove('display_blackNwhite');
+      isImageclicked = false
+    } else {
+      e.target.classList.add('display_blackNwhite')
+      isImageclicked = true;
+    }
+  } else {
+    if (isImageclicked === true) {
+      e.target.classList.remove('display_blackNwhite')
+      isImageclicked = false;
+    } else {
+      e.target.classList.add('display_blackNwhite')
+      isImageclicked = true;
+    }
+  }
 })
 
 function displayReturnedValues() {
