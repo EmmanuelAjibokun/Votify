@@ -1,9 +1,13 @@
 const voteButton = document.querySelector('.vote_button');
 let voteNumber1 = document.querySelector('.vote_number1').textContent;
 let voteNumber2 = document.querySelector('.vote_number2').textContent;
+const candidatesImage = document.querySelector('.candidates_img');
 
 
-voteButton.addEventListener('click', displayReturnedValues)
+voteButton.addEventListener('click', displayReturnedValues);
+candidatesImage.addEventListener('click', (e) => {
+  console.log(e.target)
+})
 
 function displayReturnedValues() {
   document.querySelector('.vote_number1').textContent = increaseVoteCount1();
