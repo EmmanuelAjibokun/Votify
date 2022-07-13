@@ -6,6 +6,13 @@ const buttonImage1 = document.querySelector('.button_image1');
 const buttonImage2 = document.querySelector('.button_image2');
 let isImageclicked = false;
 
+const map = document.getElementById('map');
+
+map.addEventListener('click', (e) => {
+  let content = e.target;
+  console.log(simplemaps_usmap_mapdata.state_specific[content])
+})
+
 
 
 candidatesImage.addEventListener('click', (e) => {
@@ -52,10 +59,14 @@ function checkForClickedImage(e) {
 }
 
 function displayVote1() {
-  document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+  if (voteNumber1 <= 10) {
+    document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+  } else console.log('too many votes')
 }
 function displayVote2() {
-  document.querySelector('.vote_number2').textContent = increaseVoteCount2();
+  if (voteNumber2 <= 10) {
+    document.querySelector('.vote_number2').textContent = increaseVoteCount2();
+  } else console.log("too many votes")
 }
 
 function increaseVoteCount1() {
