@@ -108,7 +108,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
-  transition: all 3000ms ease-in-out;
+  transition: background-blend-mode 3000ms ease-in-out;
 }
 
 .candidate2:hover {

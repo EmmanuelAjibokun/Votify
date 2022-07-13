@@ -1,3 +1,12 @@
+const voteButton = document.querySelector('.vote_button');
+voteButton.addEventListener('click', () => {
+  console.log('manny')
+})
+
+function increaseVoteCount() {
+  
+} 
+
 var simplemaps_usmap_mapdata={
   main_settings: {
     //General settings
