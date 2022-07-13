@@ -1,11 +1,26 @@
 const voteButton = document.querySelector('.vote_button');
-voteButton.addEventListener('click', () => {
-  console.log('manny')
-})
+let voteNumber1 = document.querySelector('.vote_number1').textContent;
+let voteNumber2 = document.querySelector('.vote_number2').textContent;
 
-function increaseVoteCount() {
-  
-} 
+
+voteButton.addEventListener('click', displayReturnedValues)
+
+function displayReturnedValues() {
+  document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+  document.querySelector('.vote_number2').textContent = increaseVoteCount2();
+}
+
+function increaseVoteCount1() {
+  voteNumber1 = parseInt(voteNumber1);
+  voteNumber1 += 1;
+  return voteNumber1
+}
+
+function increaseVoteCount2() {
+  voteNumber2 = parseInt(voteNumber2);
+  voteNumber2 += 1;
+  return voteNumber2
+}
 
 var simplemaps_usmap_mapdata={
   main_settings: {
