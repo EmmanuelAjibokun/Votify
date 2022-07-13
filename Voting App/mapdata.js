@@ -2,10 +2,12 @@ const voteButton = document.querySelector('.vote_button');
 let voteNumber1 = document.querySelector('.vote_number1').textContent;
 let voteNumber2 = document.querySelector('.vote_number2').textContent;
 const candidatesImage = document.querySelector('.candidates_img');
+const buttonImage1 = document.querySelector('.button_image1');
+const buttonImage2 = document.querySelector('.button_image2');
 let isImageclicked = false;
 
 
-voteButton.addEventListener('click', displayReturnedValues);
+
 candidatesImage.addEventListener('click', (e) => {
   if (e.target.matches('.candidate1')) {
     if (isImageclicked === true) {
@@ -24,10 +26,35 @@ candidatesImage.addEventListener('click', (e) => {
       isImageclicked = true;
     }
   }
+
+  checkForClickedImage(e)
 })
 
-function displayReturnedValues() {
+function checkForClickedImage(e) {
+  if (e.target.matches('.display_blackNwhite')) {
+    if (e.target.matches('.candidate1')) {
+      voteButton.addEventListener('click', () => {
+        if (buttonImage1.classList.contains('display_blackNwhite')) {
+          displayVote1()
+        }
+        return
+      });
+      console.log(e.target)
+    } else if (e.target.matches('.candidate2')) {
+      voteButton.addEventListener('click', () => {
+        if (buttonImage2.classList.contains('display_blackNwhite')) {
+          displayVote2()
+        }
+        return
+      });
+    } 
+  }
+}
+
+function displayVote1() {
   document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+}
+function displayVote2() {
   document.querySelector('.vote_number2').textContent = increaseVoteCount2();
 }
 
