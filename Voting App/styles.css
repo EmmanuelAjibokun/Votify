@@ -86,7 +86,6 @@ body {
 
 .candidate1 {
   background-image: url(../image/edward.png);
-  background-blend-mode: luminosity;
   background-color: black;
   height: 100px;
   width: 100px;
@@ -96,9 +95,12 @@ body {
   border-radius: 10px;
 }
 
+.candidate1:hover {
+  background-blend-mode: luminosity;
+}
+
 .candidate2 {
   background-image: url(../image/elon.png);
-  background-blend-mode: luminosity;
   background-color: black;
   height: 100px;
   width: 100px;
@@ -106,6 +108,15 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
+  transition: all 3000ms ease-in-out;
+}
+
+.candidate2:hover {
+  background-blend-mode: luminosity;
+}
+
+.display_candidates_blackNwhite {
+  background-blend-mode: luminosity;
 }
 
 .vote_button {
