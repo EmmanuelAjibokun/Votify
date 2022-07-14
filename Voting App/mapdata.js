@@ -8,9 +8,12 @@ let isImageclicked = false;
 
 const map = document.getElementById('map');
 
-map.addEventListener('click', (e) => {
-  let content = e.target;
-  console.log(simplemaps_usmap_mapdata.state_specific[content])
+map.addEventListener('click', () => {
+  const parentObject = simplemaps_usmap_mapdata.state_specific;
+  // let content = e.target;
+  for(let key in parentObject) {
+    console.log(parentObject[key]['name'])
+  }
 })
 
 
