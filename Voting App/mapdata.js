@@ -8,15 +8,14 @@ let isImageclicked = false;
 
 const map = document.getElementById('map');
 
-map.addEventListener('click', () => {
+map.addEventListener('click', (e) => {
   const parentObject = simplemaps_usmap_mapdata.state_specific;
-  // let content = e.target;
+  let content = e.target;
   for(let key in parentObject) {
     console.log(parentObject[key]['name'])
   }
+  console.log(content)
 })
-
-
 
 candidatesImage.addEventListener('click', (e) => {
   if (e.target.matches('.candidate1')) {
@@ -46,16 +45,18 @@ function checkForClickedImage(e) {
       voteButton.addEventListener('click', () => {
         if (buttonImage1.classList.contains('display_blackNwhite')) {
           displayVote1()
+        } else {
+          console.log("select candidate")
         }
-        return
       });
       console.log(e.target)
     } else if (e.target.matches('.candidate2')) {
       voteButton.addEventListener('click', () => {
         if (buttonImage2.classList.contains('display_blackNwhite')) {
           displayVote2()
+        } else {
+          console.log("select candidate")
         }
-        return
       });
     } 
   }
@@ -96,7 +97,7 @@ var simplemaps_usmap_mapdata={
 		state_description: "State description",
     state_color: "#08bf46",
     state_hover_color: "#88A4BC",
-    state_url: "https://simplemaps.com",
+    // state_url: "https://simplemaps.com",
     border_size: 1.5,
     border_color: "#ffffff",
     all_states_inactive: "no",
