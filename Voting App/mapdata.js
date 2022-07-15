@@ -8,20 +8,12 @@ let isImageclicked = false;
 
 const map = document.getElementById('map');
 
-map.addEventListener('click', (e) => {
+map.addEventListener('click', () => {
   const parentObject = simplemaps_usmap_mapdata.state_specific;
-  let content = e.target;
   for(let key in parentObject) {
     console.log(parentObject[key]['name'])
   }
-  console.log(content)
 })
-
-// add a select option to vote_detail div
-const selectState = document.querySelector('.select_state');
-const selectList = document.createElement('select');
-selectList.classList.add('state');
-selectState.appendChild(selectList);
 
 
 candidatesImage.addEventListener('click', (e) => {
@@ -896,3 +888,18 @@ var simplemaps_usmap_mapdata={
     }
   }
 };
+
+// add a select option to vote_detail div
+const selectState = document.querySelector('.select_state');
+const selectList = document.createElement('select');
+selectList.classList.add('state');
+selectState.appendChild(selectList);
+
+// create state option by iterating through the map object
+const parentObject = simplemaps_usmap_mapdata.state_specific;
+for(let key in parentObject) {
+  let option = document.createElement("option");
+  option.value = parentObject[key]['name'];
+  option.text = parentObject[key]['name'];
+  selectList.appendChild(option)
+}
