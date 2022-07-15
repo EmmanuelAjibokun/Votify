@@ -36,7 +36,7 @@ voteButton.addEventListener('click', whoToVote)
 function whoToVote() {
   if (checkSelectedState) {
     if(buttonImage1.matches('.display_blackNwhite')) {
-      displayVote1()
+      voteForSelectedState()
     } else if(buttonImage2.matches('.display_blackNwhite')) {
       displayVote2()
     } else {
@@ -48,7 +48,13 @@ function whoToVote() {
 }
 
 function voteForSelectedState() {
-
+  let state = [checkSelectedState]
+  state.forEach(element => {
+    if (voteNumber1 < 10) {
+      document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+      console.log(element)
+    } else alert('Reached max vote per state, pick a new state')
+  });
 }
 
 // function checkForClickedImage(e) {
@@ -75,9 +81,7 @@ function voteForSelectedState() {
 // }
 
 function displayVote1() {
-  if (voteNumber1 < 10) {
-    document.querySelector('.vote_number1').textContent = increaseVoteCount1();
-  } else alert('Reached max vote per state, pick a new state')
+  document.querySelector('.vote_number1').textContent = increaseVoteCount1();
 }
 function displayVote2() {
   if (voteNumber2 < 10) {
