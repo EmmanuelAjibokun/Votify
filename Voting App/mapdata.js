@@ -6,15 +6,6 @@ const buttonImage1 = document.querySelector('.button_image1');
 const buttonImage2 = document.querySelector('.button_image2');
 let isImageclicked = false;
 
-const map = document.getElementById('map');
-
-map.addEventListener('click', () => {
-  const parentObject = simplemaps_usmap_mapdata.state_specific;
-  for(let key in parentObject) {
-    console.log(parentObject[key]['name'])
-  }
-})
-
 
 candidatesImage.addEventListener('click', (e) => {
   if (e.target.matches('.candidate1')) {
@@ -35,41 +26,57 @@ candidatesImage.addEventListener('click', (e) => {
     }
   }
 
-  checkForClickedImage(e)
+  // checkForClickedImage(e)
 })
 
-function checkForClickedImage(e) {
-  if (e.target.matches('.display_blackNwhite')) {
-    if (e.target.matches('.candidate1')) {
-      voteButton.addEventListener('click', () => {
-        if (buttonImage1.classList.contains('display_blackNwhite')) {
-          displayVote1()
-        } else {
-          console.log("select candidate")
-        }
-      });
-      console.log(e.target)
-    } else if (e.target.matches('.candidate2')) {
-      voteButton.addEventListener('click', () => {
-        if (buttonImage2.classList.contains('display_blackNwhite')) {
-          displayVote2()
-        } else {
-          console.log("select candidate")
-        }
-      });
-    } 
+voteButton.addEventListener('click', whoToVote)
+
+function whoToVote() {
+  if (checkSelectedState) {
+    if(buttonImage1.matches('.display_blackNwhite')) {
+      displayVote1()
+    } else if(buttonImage2.matches('.display_blackNwhite')) {
+      displayVote2()
+    } else {
+      alert("Choose a candidate")
+    }
+  } else {
+    alert("select state")
   }
 }
 
+// function checkForClickedImage(e) {
+//   if (e.target.matches('.display_blackNwhite')) {
+//     if (e.target.matches('.candidate1')) {
+//       // voteButton.addEventListener('click', () => {
+//       //   if (buttonImage1.classList.contains('display_blackNwhite')) {
+//       //     displayVote1()
+//       //   } else {
+//       //     console.log("select candidate")
+//       //   }
+//       // });
+//       console.log(e.target)
+//     } else if (e.target.matches('.candidate2')) {
+//       // voteButton.addEventListener('click', () => {
+//       //   if (buttonImage2.classList.contains('display_blackNwhite')) {
+//       //     displayVote2()
+//       //   } else {
+//       //     console.log("select candidate")
+//       //   }
+//       // });
+//     } 
+//   }
+// }
+
 function displayVote1() {
-  if (voteNumber1 <= 10) {
+  if (voteNumber1 < 10) {
     document.querySelector('.vote_number1').textContent = increaseVoteCount1();
-  } else console.log('too many votes')
+  } else alert('Reached max vote per state, pick a new state')
 }
 function displayVote2() {
-  if (voteNumber2 <= 10) {
+  if (voteNumber2 < 10) {
     document.querySelector('.vote_number2').textContent = increaseVoteCount2();
-  } else console.log("too many votes")
+  } else alert("Reached max vote per state, pick a new state")
 }
 
 function increaseVoteCount1() {
@@ -902,4 +909,11 @@ for(let key in parentObject) {
   option.value = parentObject[key]['name'];
   option.text = parentObject[key]['name'];
   selectList.appendChild(option)
+}
+
+selectList.addEventListener('click', checkSelectedState)
+
+function checkSelectedState(e) {
+  console.log(e.target.value)
+  return e.target.value
 }
