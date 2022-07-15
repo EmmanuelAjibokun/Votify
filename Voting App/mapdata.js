@@ -9,6 +9,7 @@ let isImageclicked = false;
 
 candidatesImage.addEventListener('click', (e) => {
   if (e.target.matches('.candidate1')) {
+    buttonImage2.classList.remove('display_blackNwhite');
     if (isImageclicked === true) {
       e.target.classList.remove('display_blackNwhite');
       isImageclicked = false
@@ -17,6 +18,7 @@ candidatesImage.addEventListener('click', (e) => {
       isImageclicked = true;
     }
   } else {
+    buttonImage1.classList.remove('display_blackNwhite');
     if (isImageclicked === true) {
       e.target.classList.remove('display_blackNwhite')
       isImageclicked = false;
@@ -43,6 +45,10 @@ function whoToVote() {
   } else {
     alert("select state")
   }
+}
+
+function voteForSelectedState() {
+
 }
 
 // function checkForClickedImage(e) {
