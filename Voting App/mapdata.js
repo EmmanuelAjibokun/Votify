@@ -17,6 +17,13 @@ map.addEventListener('click', (e) => {
   console.log(content)
 })
 
+// add a select option to vote_detail div
+const selectState = document.querySelector('.select_state');
+const selectList = document.createElement('select');
+selectList.classList.add('state');
+selectState.appendChild(selectList);
+
+
 candidatesImage.addEventListener('click', (e) => {
   if (e.target.matches('.candidate1')) {
     if (isImageclicked === true) {
