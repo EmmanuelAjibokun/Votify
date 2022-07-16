@@ -57,29 +57,6 @@ function voteForSelectedState() {
   });
 }
 
-// function checkForClickedImage(e) {
-//   if (e.target.matches('.display_blackNwhite')) {
-//     if (e.target.matches('.candidate1')) {
-//       // voteButton.addEventListener('click', () => {
-//       //   if (buttonImage1.classList.contains('display_blackNwhite')) {
-//       //     displayVote1()
-//       //   } else {
-//       //     console.log("select candidate")
-//       //   }
-//       // });
-//       console.log(e.target)
-//     } else if (e.target.matches('.candidate2')) {
-//       // voteButton.addEventListener('click', () => {
-//       //   if (buttonImage2.classList.contains('display_blackNwhite')) {
-//       //     displayVote2()
-//       //   } else {
-//       //     console.log("select candidate")
-//       //   }
-//       // });
-//     } 
-//   }
-// }
-
 function displayVote1() {
   document.querySelector('.vote_number1').textContent = increaseVoteCount1();
 }
