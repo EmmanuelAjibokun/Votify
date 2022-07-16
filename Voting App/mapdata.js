@@ -4,11 +4,13 @@ let voteNumber2 = document.querySelector('.vote_number2').textContent;
 const candidatesImage = document.querySelector('.candidates_img');
 const buttonImage1 = document.querySelector('.button_image1');
 const buttonImage2 = document.querySelector('.button_image2');
+const audio = document.getElementById('tinkSound');
 let isImageclicked = false;
 
 
 candidatesImage.addEventListener('click', (e) => {
   if (e.target.matches('.candidate1')) {
+    playSound()
     buttonImage2.classList.remove('display_blackNwhite');
     if (isImageclicked === true) {
       e.target.classList.remove('display_blackNwhite');
@@ -18,6 +20,7 @@ candidatesImage.addEventListener('click', (e) => {
       isImageclicked = true;
     }
   } else {
+    playSound()
     buttonImage1.classList.remove('display_blackNwhite');
     if (isImageclicked === true) {
       e.target.classList.remove('display_blackNwhite')
@@ -903,4 +906,9 @@ selectList.addEventListener('click', checkSelectedState)
 function checkSelectedState(e) {
   console.log(e.target.value)
   return e.target.value
+}
+
+function playSound() {
+  audio.currentTime = 0;
+  audio.play()
 }
