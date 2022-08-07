@@ -139,6 +139,15 @@ footer {
   margin-top: 50px;
 }
 
+@keyframes pop-up {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .thumbUp {
   position: fixed;
   top: 50%;
@@ -146,4 +155,9 @@ footer {
   background: #fff;
   padding: 10px;
   border-radius: 50%;
+  opacity: 0;
+}
+
+.fadeInOut {
+  animation: pop-up 1500ms;
 }
