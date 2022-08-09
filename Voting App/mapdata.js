@@ -896,7 +896,7 @@ selectState.appendChild(selectList);
 // create state option by iterating through the map object
 const parentObject = simplemaps_usmap_mapdata.state_specific;
 for(let key in parentObject) {
-  // add a value for vote_count in each object
+  // create "vote_count" key in state object add a value for vote_count in each object
   parentObject[key]["vote_count"] = 1;
   console.log(parentObject[key].vote_count)
 
@@ -913,6 +913,13 @@ function checkSelectedState(e) {
   console.log(e.target.value)
   return e.target.value
 }
+
+// add and increase vote count of each state
+function setVoteCountForState() {
+  parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
+  console.log(parentObject[key].vote_count)
+}
+
 
 function playSound() {
   audio.currentTime = 0;
