@@ -5,6 +5,7 @@ const candidatesImage = document.querySelector('.candidates_img');
 const buttonImage1 = document.querySelector('.button_image1');
 const buttonImage2 = document.querySelector('.button_image2');
 const audio = document.getElementById('tinkSound');
+// const thumbUp = document.querySelector('.thumbUp');
 let isImageclicked = false;
 
 
