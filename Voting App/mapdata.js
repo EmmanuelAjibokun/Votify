@@ -52,7 +52,11 @@ function whoToVote() {
 }
 
 function voteForSelectedState() {
+
+  setVoteCountForState()
+
   let state = [checkSelectedState]
+  
   state.forEach(element => {
     if (voteNumber1 < 10) {
       document.querySelector('.vote_number1').textContent = increaseVoteCount1();
@@ -898,7 +902,7 @@ const parentObject = simplemaps_usmap_mapdata.state_specific;
 for(let key in parentObject) {
   // create "vote_count" key in state object add a value for vote_count in each object
   parentObject[key]["vote_count"] = 1;
-  console.log(parentObject[key].vote_count)
+  // console.log(parentObject[key].vote_count)
 
   // create option for each state
   let option = document.createElement("option");
@@ -907,17 +911,27 @@ for(let key in parentObject) {
   selectList.appendChild(option)
 }
 
+let selectedState = ""
 selectList.addEventListener('click', checkSelectedState)
 
 function checkSelectedState(e) {
   console.log(e.target.value)
+  selectedState = e.target.value
   return e.target.value
 }
 
 // add and increase vote count of each state
 function setVoteCountForState() {
-  parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
-  console.log(parentObject[key].vote_count)
+  for(let key in parentObject) {
+    // parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
+
+    if(parentObject[key]["name"] == selectedState) {
+      parentObject[key]["vote_count"]++
+      console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count"])
+    }
+    // parentObject[key]["vote_count"]++
+  }
+  console.log(selectedState)
 }
 
 
