@@ -12,7 +12,6 @@ body {
   justify-content: center;
   font-size: 3rem;
   background: #efefef;
-  padding: 10px;
 }
 
 #map {
@@ -155,6 +154,19 @@ footer {
   }
   to {
     opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body > div {
+    padding: 10px;
+  }
+  .select_state {
+    display: flex;
+    flex-direction: column;
+  }
+  .state {
+    margin: 0;
   }
 }
 
