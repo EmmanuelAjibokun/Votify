@@ -883,8 +883,11 @@ function displayVote2() {
 }
 
 function increaseVoteCount1() {
-  voteNumber1 = parseInt(voteNumber1);
-  voteNumber1 += 1;
+  voteNumber1 = 0;
+  for(let key in parentObject) {
+    // Get the total vote_count_1 in object
+    voteNumber1 += parentObject[key]["vote_count_1"]
+  }
   return voteNumber1
 }
 
