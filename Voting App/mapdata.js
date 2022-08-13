@@ -38,7 +38,8 @@ candidatesImage.addEventListener('click', (e) => {
 voteButton.addEventListener('click', whoToVote)
 
 function whoToVote() {
-  if (checkSelectedState) {
+  if (selectedState) {
+    console.log("a state is selected")
     if(buttonImage1.matches('.display_blackNwhite')) {
       voteForSelectedState()
     } else if(buttonImage2.matches('.display_blackNwhite')) {
@@ -69,9 +70,9 @@ function displayVote1() {
   document.querySelector('.vote_number1').textContent = increaseVoteCount1();
 }
 function displayVote2() {
-  if (voteNumber2 < 10) {
+  // if (voteNumber2 < 10) {
     document.querySelector('.vote_number2').textContent = increaseVoteCount2();
-  } else alert("Reached max vote per state, pick a new state")
+  // } else alert("Reached max vote per state, pick a new state")
 }
 
 function increaseVoteCount1() {
@@ -922,14 +923,21 @@ function checkSelectedState(e) {
 
 // add and increase vote count of each state
 function setVoteCountForState() {
+  // if (selectState === "") {
+  //   return
+  // }
   for(let key in parentObject) {
     // parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
 
     if(parentObject[key]["name"] == selectedState) {
-      parentObject[key]["vote_count"]++
-      console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count"])
+      // check if vote count is less than less or equal to 10
+      if (parentObject[key]["vote_count"] <= 10) {
+        parentObject[key]["vote_count"]++
+        console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count"])
+      } else {
+        alert("Reached max vote per state, pick a new state")
+      }
     }
-    // parentObject[key]["vote_count"]++
   }
   console.log(selectedState)
 }
