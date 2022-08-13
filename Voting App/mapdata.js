@@ -35,68 +35,17 @@ candidatesImage.addEventListener('click', (e) => {
   // checkForClickedImage(e)
 })
 
-voteButton.addEventListener('click', whoToVote)
-
-function whoToVote() {
-  if (selectedState) {
-    console.log("a state is selected")
-    if(buttonImage1.matches('.display_blackNwhite')) {
-      voteForSelectedState()
-    } else if(buttonImage2.matches('.display_blackNwhite')) {
-      displayVote2()
-    } else {
-      alert("Choose a candidate")
-    }
-  } else {
-    alert("select state")
-  }
-}
-
-function voteForSelectedState() {
-
-  setVoteCountForState()
-
-  let state = [checkSelectedState]
-  
-  state.forEach(element => {
-    if (voteNumber1 < 10) {
-      document.querySelector('.vote_number1').textContent = increaseVoteCount1();
-      console.log(element)
-    } else alert('Reached max vote per state, pick a new state')
-  });
-}
-
-function displayVote1() {
-  document.querySelector('.vote_number1').textContent = increaseVoteCount1();
-}
-function displayVote2() {
-  // if (voteNumber2 < 10) {
-    document.querySelector('.vote_number2').textContent = increaseVoteCount2();
-  // } else alert("Reached max vote per state, pick a new state")
-}
-
-function increaseVoteCount1() {
-  voteNumber1 = parseInt(voteNumber1);
-  voteNumber1 += 1;
-  return voteNumber1
-}
-
-function increaseVoteCount2() {
-  voteNumber2 = parseInt(voteNumber2);
-  voteNumber2 += 1;
-  return voteNumber2
-}
-
+// map object
 var simplemaps_usmap_mapdata={
   main_settings: {
     //General settings
-		width: "responsive", //or 'responsive'
+    width: "responsive", //or 'responsive'
     background_color: "#FFFFFF",
     background_transparent: "yes",
     popups: "detect",
     
-		//State defaults
-		state_description: "State description",
+    //State defaults
+    state_description: "State description",
     state_color: "#08bf46",
     state_hover_color: "#88A4BC",
     // state_url: "https://simplemaps.com",
@@ -105,8 +54,8 @@ var simplemaps_usmap_mapdata={
     all_states_inactive: "no",
     all_states_zoomable: "no",
     
-		//Location defaults
-		location_description: "Location description",
+    //Location defaults
+    location_description: "Location description",
     location_color: "#FF0067",
     location_opacity: 0.8,
     location_hover_opacity: 1,
@@ -119,15 +68,15 @@ var simplemaps_usmap_mapdata={
     all_locations_inactive: "no",
     all_locations_hidden: "no",
     
-		//Label defaults
-		label_color: "#ffffff",
+    //Label defaults
+    label_color: "#ffffff",
     label_hover_color: "#ffffff",
     label_size: 22,
     label_font: "Arial",
     hide_labels: "no",
    
-		//Zoom settings
-		manual_zoom: "yes",
+    //Zoom settings
+    manual_zoom: "yes",
     back_image: "no",
     arrow_box: "no",
     navigation_size: "40",
@@ -142,16 +91,16 @@ var simplemaps_usmap_mapdata={
     zoom_percentage: 0.99,
     zoom_time: 0.5,
     
-		//Popup settings
-		popup_color: "white",
+    //Popup settings
+    popup_color: "white",
     popup_opacity: 0.9,
     popup_shadow: 1,
     popup_corners: 5,
     popup_font: "12px/1.5 Verdana, Arial, Helvetica, sans-serif",
     popup_nocss: "no",
     
-		//Advanced settings
-		div: "map",
+    //Advanced settings
+    div: "map",
     auto_load: "yes",
     rotate: "0",
     url_new_tab: "yes",
@@ -892,6 +841,59 @@ var simplemaps_usmap_mapdata={
   }
 };
 
+const parentObject = simplemaps_usmap_mapdata.state_specific;
+
+voteButton.addEventListener('click', whoToVote)
+
+function whoToVote() {
+  if (selectedState) {
+    console.log("a state is selected")
+    if(buttonImage1.matches('.display_blackNwhite')) {
+      voteForSelectedState()
+    } else if(buttonImage2.matches('.display_blackNwhite')) {
+      displayVote2()
+    } else {
+      alert("Choose a candidate")
+    }
+  } else {
+    alert("select state")
+  }
+}
+
+
+function voteForSelectedState() {
+
+  setVoteCountForState()
+
+  let state = [checkSelectedState]
+  
+  state.forEach(element => {
+    document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+    console.log(element)
+  });
+}
+
+function displayVote1() {
+  document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+}
+function displayVote2() {
+  // if (voteNumber2 < 10) {
+    document.querySelector('.vote_number2').textContent = increaseVoteCount2();
+  // } else alert("Reached max vote per state, pick a new state")
+}
+
+function increaseVoteCount1() {
+  voteNumber1 = parseInt(voteNumber1);
+  voteNumber1 += 1;
+  return voteNumber1
+}
+
+function increaseVoteCount2() {
+  voteNumber2 = parseInt(voteNumber2);
+  voteNumber2 += 1;
+  return voteNumber2
+}
+
 // add a select option to vote_detail div
 const selectState = document.querySelector('.select_state');
 const selectList = document.createElement('select');
@@ -899,10 +901,10 @@ selectList.classList.add('state');
 selectState.appendChild(selectList);
 
 // create state option by iterating through the map object
-const parentObject = simplemaps_usmap_mapdata.state_specific;
 for(let key in parentObject) {
   // create "vote_count" key in state object add a value for vote_count in each object
-  parentObject[key]["vote_count"] = 0;
+  parentObject[key]["vote_count_1"] = 0;
+  parentObject[key]["vote_count_2"] = 0;
   // console.log(parentObject[key].vote_count)
 
   // create option for each state
@@ -923,19 +925,19 @@ function checkSelectedState(e) {
 
 // add and increase vote count of each state
 function setVoteCountForState() {
-  // if (selectState === "") {
-  //   return
-  // }
   for(let key in parentObject) {
-    // parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
-
+    
     if(parentObject[key]["name"] == selectedState) {
-      // check if vote count is less than less or equal to 10
-      if (parentObject[key]["vote_count"] <= 10) {
-        parentObject[key]["vote_count"]++
-        console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count"])
-      } else {
-        alert("Reached max vote per state, pick a new state")
+      // check for candidate's vote to increase
+      if (buttonImage1.matches('.display_blackNwhite')) {
+        
+        // check if vote count is less than less or equal to 10
+        if (parentObject[key]["vote_count_1"] <= 10) {
+          parentObject[key]["vote_count_1"]++
+          console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count_1"])
+        } else {
+          alert("Reached max vote per state, pick a new state")
+        }
       }
     }
   }
@@ -947,3 +949,6 @@ function playSound() {
   audio.currentTime = 0;
   audio.play()
 }
+    
+
+// parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
