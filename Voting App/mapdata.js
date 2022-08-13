@@ -847,7 +847,6 @@ voteButton.addEventListener('click', whoToVote)
 
 function whoToVote() {
   if (selectedState) {
-    console.log("a state is selected")
     if(buttonImage1.matches('.display_blackNwhite')) {
       voteForSelectedState()
     } else if(buttonImage2.matches('.display_blackNwhite')) {
@@ -877,6 +876,7 @@ function displayVote1() {
   document.querySelector('.vote_number1').textContent = increaseVoteCount1();
 }
 function displayVote2() {
+  setVoteCountForState()
   // if (voteNumber2 < 10) {
     document.querySelector('.vote_number2').textContent = increaseVoteCount2();
   // } else alert("Reached max vote per state, pick a new state")
@@ -892,8 +892,11 @@ function increaseVoteCount1() {
 }
 
 function increaseVoteCount2() {
-  voteNumber2 = parseInt(voteNumber2);
-  voteNumber2 += 1;
+  voteNumber2 = 0;
+  for(let key in parentObject) {
+    // Get the total vote_count_1 in object
+    voteNumber2 += parentObject[key]["vote_count_2"]
+  }
   return voteNumber2
 }
 
@@ -935,6 +938,7 @@ function setVoteCountForState() {
       if (buttonImage1.matches('.display_blackNwhite')) {
         
         // check if vote count is less than less or equal to 10
+        
         if (parentObject[key]["vote_count_1"] <= 10) {
           parentObject[key]["vote_count_1"]++
           console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count_1"])
@@ -942,9 +946,21 @@ function setVoteCountForState() {
           alert("Reached max vote per state, pick a new state")
         }
       }
+      if (buttonImage2.matches('.display_blackNwhite')) {
+        
+        // check if vote count is less than less or equal to 10
+
+        if (parentObject[key]["vote_count_2"] < 10) {
+          parentObject[key]["vote_count_2"]++
+          console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count_2"])
+        } else {
+          alert("Reached max vote per state, pick a new state")
+        }
+      }
+
     }
   }
-  console.log(selectedState)
+  // console.log(selectedState)
 }
 
 

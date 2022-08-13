@@ -12,6 +12,7 @@ body {
   justify-content: center;
   font-size: 3rem;
   background: #efefef;
+  padding: 10px;
 }
 
 #map {
@@ -34,7 +35,7 @@ body {
 .state {
   box-sizing: border-box;
   font-size: 2.4rem;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   margin-left: 2rem;
   background: #c6e9d2;
   border-radius: 19px;
@@ -128,8 +129,8 @@ body {
   font-weight: inherit;
   border: none;
   border-radius: 22px;
-  padding: .5rem 2rem;
-  margin: 1.5rem 0 .5rem;
+  padding: 0.5rem 2rem;
+  margin: 1.5rem 0 0.5rem;
 }
 
 footer {
