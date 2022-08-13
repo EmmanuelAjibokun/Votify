@@ -848,7 +848,7 @@ voteButton.addEventListener('click', whoToVote)
 function whoToVote() {
   if (selectedState) {
     if(buttonImage1.matches('.display_blackNwhite')) {
-      voteForSelectedState()
+      displayVote1()
     } else if(buttonImage2.matches('.display_blackNwhite')) {
       displayVote2()
     } else {
@@ -860,26 +860,14 @@ function whoToVote() {
 }
 
 
-function voteForSelectedState() {
-
-  setVoteCountForState()
-
-  let state = [checkSelectedState]
-  
-  state.forEach(element => {
-    document.querySelector('.vote_number1').textContent = increaseVoteCount1();
-    console.log(element)
-  });
-}
 
 function displayVote1() {
+  setVoteCountForState()
   document.querySelector('.vote_number1').textContent = increaseVoteCount1();
 }
 function displayVote2() {
   setVoteCountForState()
-  // if (voteNumber2 < 10) {
-    document.querySelector('.vote_number2').textContent = increaseVoteCount2();
-  // } else alert("Reached max vote per state, pick a new state")
+  document.querySelector('.vote_number2').textContent = increaseVoteCount2();
 }
 
 function increaseVoteCount1() {
@@ -938,8 +926,8 @@ function setVoteCountForState() {
       if (buttonImage1.matches('.display_blackNwhite')) {
         
         // check if vote count is less than less or equal to 10
-        
-        if (parentObject[key]["vote_count_1"] <= 10) {
+
+        if (parentObject[key]["vote_count_1"] < 10) {
           parentObject[key]["vote_count_1"]++
           console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count_1"])
         } else {
@@ -971,3 +959,19 @@ function playSound() {
     
 
 // parentObject[key]["vote_count"] == null ? parentObject[key]["vote_count"] = 1 : parentObject[key]["vote_count"]++
+
+// function voteForSelectedState() {
+
+//   setVoteCountForState()
+
+//   let state = [checkSelectedState]
+  
+//   state.forEach(element => {
+//     document.querySelector('.vote_number1').textContent = increaseVoteCount1();
+//     console.log(element)
+//   });
+// }
+
+
+// Next step: create a new key for total votecount of each state
+// and compare you condition for increase vote count base on the total vote count for each state
