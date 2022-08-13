@@ -901,7 +901,7 @@ selectState.appendChild(selectList);
 const parentObject = simplemaps_usmap_mapdata.state_specific;
 for(let key in parentObject) {
   // create "vote_count" key in state object add a value for vote_count in each object
-  parentObject[key]["vote_count"] = 1;
+  parentObject[key]["vote_count"] = 0;
   // console.log(parentObject[key].vote_count)
 
   // create option for each state
