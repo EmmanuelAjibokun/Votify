@@ -899,6 +899,8 @@ for(let key in parentObject) {
   // create "vote_count" key in state object add a value for vote_count in each object
   parentObject[key]["vote_count_1"] = 0;
   parentObject[key]["vote_count_2"] = 0;
+  parentObject[key]["total_vote_count"] = 0;
+
   // console.log(parentObject[key].vote_count)
 
   // create option for each state
@@ -922,14 +924,14 @@ function setVoteCountForState() {
   for(let key in parentObject) {
     
     if(parentObject[key]["name"] == selectedState) {
+      
       // check for candidate's vote to increase
       if (buttonImage1.matches('.display_blackNwhite')) {
-        
         // check if vote count is less than less or equal to 10
-
-        if (parentObject[key]["vote_count_1"] < 10) {
+        
+        if (parentObject[key]["total_vote_count"] < 10) {
           parentObject[key]["vote_count_1"]++
-          console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count_1"])
+          console.log(parentObject[key]["name"] + "1 : " + parentObject[key]["vote_count_1"])
         } else {
           alert("Reached max vote per state, pick a new state")
         }
@@ -937,15 +939,17 @@ function setVoteCountForState() {
       if (buttonImage2.matches('.display_blackNwhite')) {
         
         // check if vote count is less than less or equal to 10
-
-        if (parentObject[key]["vote_count_2"] < 10) {
+        
+        if (parentObject[key]["total_vote_count"] < 10) {
           parentObject[key]["vote_count_2"]++
-          console.log(parentObject[key]["name"] + ": " + parentObject[key]["vote_count_2"])
+          console.log(parentObject[key]["name"] + "2 : " + parentObject[key]["vote_count_2"])
         } else {
           alert("Reached max vote per state, pick a new state")
         }
       }
-
+      parentObject[key]["total_vote_count"] = parentObject[key]["vote_count_1"] + parentObject[key]["vote_count_2"]
+      console.log(parentObject[key]["name"] + ", total:" + parentObject[key]["total_vote_count"])
+      
     }
   }
   // console.log(selectedState)
